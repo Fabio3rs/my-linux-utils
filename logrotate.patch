@@ -1,0 +1,28 @@
+diff -Naur org/logrotate-3.14.0/logrotate.c logrotate-3.14.0/logrotate.c
+--- org/logrotate-3.14.0/logrotate.c	2018-03-08 10:25:39.000000000 -0300
++++ logrotate-3.14.0/logrotate.c	2020-10-17 00:43:36.761666715 -0300
+@@ -31,6 +31,9 @@
+ #include <sys/param.h>
+ #endif
+ 
++/* Fix duplicate logs */
++#define LOGS_NOT_EXTERN 1
++
+ #include "log.h"
+ #include "logrotate.h"
+ 
+diff -Naur org/logrotate-3.14.0/logrotate.h logrotate-3.14.0/logrotate.h
+--- org/logrotate-3.14.0/logrotate.h	2018-02-19 06:50:02.000000000 -0300
++++ logrotate-3.14.0/logrotate.h	2020-10-17 00:42:59.862115261 -0300
+@@ -81,7 +81,11 @@
+     TAILQ_ENTRY(logInfo) list;
+ };
+ 
++#if defined(LOGS_NOT_EXTERN)
+ TAILQ_HEAD(logInfoHead, logInfo) logs;
++#else
++extern TAILQ_HEAD(logInfoHead, logInfo) logs;
++#endif
+ 
+ extern int numLogs;
+ extern int debug;
