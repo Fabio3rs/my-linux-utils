@@ -6,7 +6,7 @@ chroot-this - bash script to fast chroot, incomplete
 
 genfstab.c - source for a C program to generate fstab from mounted drivers, incomplete, not fully tested
 
-logrotate.patch - patch for gentoo app-admin/logrotate-3.14.0 that was not compiling in my PC with folow linking error:
+logrotate.patch - patch for gentoo app-admin/logrotate-3.14.0 that was not compiling in my PC with folow linking error (*NOT FULLY TESTED*):
 x86_64-pc-linux-gnu-gcc -Wall -Wextra -Wmissing-format-attribute -Wmissing-noreturn -Wpointer-arith -Wshadow -Wstrict-prototypes -Wundef -Wunused -Wwrite-strings -O2 -pipe -march=native -mtune=native -s -fno-common -Wl,-O1 -Wl,--as-needed  -Wl,-O1 -Wl,--as-needed -o logrotate config.o log.o logrotate.o  -lacl -lpopt 
 /usr/lib/gcc/x86_64-pc-linux-gnu/10.2.0/../../../../x86_64-pc-linux-gnu/bin/ld: logrotate.o:(.bss+0x10): multiple definition of `logs'; config.o:(.bss+0x0): first defined here
 collect2: error: ld returned 1 exit status
